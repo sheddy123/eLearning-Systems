@@ -1,0 +1,2128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Registered" Type="datetime" Nullable="false" />
+          <Property Name="UserRoles" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserPhoto" Type="varbinary(max)" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Choices">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuestionId" Type="int" Nullable="false" />
+          <Property Name="Label" Type="nvarchar(max)" />
+          <Property Name="Points" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CourseInstructors">
+          <Key>
+            <PropertyRef Name="Course_Id" />
+            <PropertyRef Name="Instructor_id" />
+          </Key>
+          <Property Name="Course_Id" Type="int" Nullable="false" />
+          <Property Name="Instructor_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Courses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseCode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Credits" Type="int" Nullable="false" />
+          <Property Name="DepartmentID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Departments">
+          <Key>
+            <PropertyRef Name="DepartmentID" />
+          </Key>
+          <Property Name="DepartmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="InstructorID" Type="int" Nullable="false" />
+          <Property Name="GetInstructor_id" Type="int" />
+          <Property Name="Student_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="Enrollments">
+          <Key>
+            <PropertyRef Name="EnrollmentID" />
+          </Key>
+          <Property Name="EnrollmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseID" Type="int" Nullable="false" />
+          <Property Name="StudentID" Type="int" Nullable="false" />
+          <Property Name="Grades" Type="int" />
+        </EntityType>
+        <EntityType Name="FileDetailds">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar(max)" />
+          <Property Name="Extension" Type="nvarchar(max)" />
+          <Property Name="InstructorId" Type="int" Nullable="false" />
+          <Property Name="SupportId" Type="int" Nullable="false" />
+          <Property Name="CourseCode" Type="int" Nullable="false" />
+          <Property Name="Support_SupportId" Type="int" />
+          <Property Name="Support_SupportId1" Type="int" />
+        </EntityType>
+        <EntityType Name="FileDetais">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar(max)" />
+          <Property Name="Extension" Type="nvarchar(max)" />
+          <Property Name="InstructorId" Type="int" Nullable="false" />
+          <Property Name="SupportId" Type="int" Nullable="false" />
+          <Property Name="CourseCode" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Instructors">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar(max)" />
+          <Property Name="HireDate" Type="datetime" Nullable="false" />
+          <Property Name="DepartmentId" Type="int" Nullable="false" />
+          <Property Name="Department_DepartmentID" Type="int" />
+          <Property Name="Department_DepartmentID1" Type="int" />
+          <Property Name="Registration_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="OfficeAssignments">
+          <Key>
+            <PropertyRef Name="InstructorID" />
+          </Key>
+          <Property Name="InstructorID" Type="int" Nullable="false" />
+          <Property Name="Location" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Programmes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Programmes" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="DepartmentId" Type="int" Nullable="false" />
+          <Property Name="Student_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="QuestionCategories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Category" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Questions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuestionCategoryId" Type="int" Nullable="false" />
+          <Property Name="QuestionType" Type="nvarchar(max)" />
+          <Property Name="QuestionId" Type="nvarchar(max)" />
+          <Property Name="Points" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QuestionXDurations">
+          <Key>
+            <PropertyRef Name="TestXQuestionsId" />
+          </Key>
+          <Property Name="TestXQuestionsId" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="RegistrationId" Type="int" Nullable="false" />
+          <Property Name="TestXQuestionId" Type="int" Nullable="false" />
+          <Property Name="RequestTime" Type="datetime" Nullable="false" />
+          <Property Name="LeaveTime" Type="datetime" Nullable="false" />
+          <Property Name="AnsweredTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Registrations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="InstructorId" Type="int" Nullable="false" />
+          <Property Name="TestId" Type="int" Nullable="false" />
+          <Property Name="RegistrationDate" Type="datetime" Nullable="false" />
+          <Property Name="Token" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ExpireTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MatriculationNumber" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MaritalStat" Type="int" Nullable="false" />
+          <Property Name="userId" Type="nvarchar(max)" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="20" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="20" />
+          <Property Name="Genderr" Type="int" Nullable="false" />
+          <Property Name="Religions" Type="int" Nullable="false" />
+          <Property Name="DOB" Type="datetime" Nullable="false" />
+          <Property Name="Nationality" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="StateOfOrigin" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="LGA" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="level" Type="int" Nullable="false" />
+          <Property Name="DepartmentId" Type="int" Nullable="false" />
+          <Property Name="ProgrammeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Supports">
+          <Key>
+            <PropertyRef Name="SupportId" />
+          </Key>
+          <Property Name="SupportId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Summary" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="CoursesId" Type="int" Nullable="false" />
+          <Property Name="Course_Id" Type="int" />
+          <Property Name="FileDetail_Id" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="Tests">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="DurationInMinute" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TestXPapers">
+          <Key>
+            <PropertyRef Name="TestXPaperId" />
+          </Key>
+          <Property Name="TestXPaperId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Answer" Type="nvarchar(max)" />
+          <Property Name="MarkScored" Type="int" Nullable="false" />
+          <Property Name="ChoiceId" Type="int" Nullable="false" />
+          <Property Name="RegistrationId" Type="int" Nullable="false" />
+          <Property Name="TestXQuestionsId" Type="int" Nullable="false" />
+          <Property Name="TestXQuestions_TestXQuestionId" Type="int" />
+        </EntityType>
+        <EntityType Name="TestXQuestions">
+          <Key>
+            <PropertyRef Name="TestXQuestionId" />
+          </Key>
+          <Property Name="TestXQuestionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TestId" Type="int" Nullable="false" />
+          <Property Name="QuestNumbers" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="QuestionId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Choices_dbo_Questions_QuestionId">
+          <End Role="Questions" Type="Self.Questions" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Choices" Type="Self.Choices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Choices">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CourseInstructors_dbo_Courses_Course_Id">
+          <End Role="Courses" Type="Self.Courses" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CourseInstructors" Type="Self.CourseInstructors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CourseInstructors">
+              <PropertyRef Name="Course_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CourseInstructors_dbo_Instructors_Instructor_id">
+          <End Role="Instructors" Type="Self.Instructors" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CourseInstructors" Type="Self.CourseInstructors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instructors">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CourseInstructors">
+              <PropertyRef Name="Instructor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Courses_dbo_Departments_DepartmentID">
+          <End Role="Departments" Type="Self.Departments" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Courses" Type="Self.Courses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="DepartmentID" />
+            </Principal>
+            <Dependent Role="Courses">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Departments_dbo_Instructors_GetInstructor_id">
+          <End Role="Instructors" Type="Self.Instructors" Multiplicity="0..1" />
+          <End Role="Departments" Type="Self.Departments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instructors">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Departments">
+              <PropertyRef Name="GetInstructor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Departments_dbo_Students_Student_Id">
+          <End Role="Students" Type="Self.Students" Multiplicity="0..1" />
+          <End Role="Departments" Type="Self.Departments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Departments">
+              <PropertyRef Name="Student_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Enrollments_dbo_Courses_CourseID">
+          <End Role="Courses" Type="Self.Courses" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Enrollments" Type="Self.Enrollments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Enrollments">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Enrollments_dbo_Students_StudentID">
+          <End Role="Students" Type="Self.Students" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Enrollments" Type="Self.Enrollments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Enrollments">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_FileDetailds_dbo_Instructors_InstructorId">
+          <End Role="Instructors" Type="Self.Instructors" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FileDetailds" Type="Self.FileDetailds" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instructors">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="FileDetailds">
+              <PropertyRef Name="InstructorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_FileDetailds_dbo_Supports_Support_SupportId">
+          <End Role="Supports" Type="Self.Supports" Multiplicity="0..1" />
+          <End Role="FileDetailds" Type="Self.FileDetailds" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supports">
+              <PropertyRef Name="SupportId" />
+            </Principal>
+            <Dependent Role="FileDetailds">
+              <PropertyRef Name="Support_SupportId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_FileDetailds_dbo_Supports_Support_SupportId1">
+          <End Role="Supports" Type="Self.Supports" Multiplicity="0..1" />
+          <End Role="FileDetailds" Type="Self.FileDetailds" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supports">
+              <PropertyRef Name="SupportId" />
+            </Principal>
+            <Dependent Role="FileDetailds">
+              <PropertyRef Name="Support_SupportId1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_FileDetais_dbo_Instructors_InstructorId">
+          <End Role="Instructors" Type="Self.Instructors" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FileDetais" Type="Self.FileDetais" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instructors">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="FileDetais">
+              <PropertyRef Name="InstructorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_FileDetais_dbo_Supports_SupportId">
+          <End Role="Supports" Type="Self.Supports" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FileDetais" Type="Self.FileDetais" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supports">
+              <PropertyRef Name="SupportId" />
+            </Principal>
+            <Dependent Role="FileDetais">
+              <PropertyRef Name="SupportId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Instructors_dbo_Departments_Department_DepartmentID">
+          <End Role="Departments" Type="Self.Departments" Multiplicity="0..1" />
+          <End Role="Instructors" Type="Self.Instructors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="DepartmentID" />
+            </Principal>
+            <Dependent Role="Instructors">
+              <PropertyRef Name="Department_DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Instructors_dbo_Departments_Department_DepartmentID1">
+          <End Role="Departments" Type="Self.Departments" Multiplicity="0..1" />
+          <End Role="Instructors" Type="Self.Instructors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="DepartmentID" />
+            </Principal>
+            <Dependent Role="Instructors">
+              <PropertyRef Name="Department_DepartmentID1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Instructors_dbo_Registrations_Registration_Id">
+          <End Role="Registrations" Type="Self.Registrations" Multiplicity="0..1" />
+          <End Role="Instructors" Type="Self.Instructors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Registrations">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Instructors">
+              <PropertyRef Name="Registration_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_OfficeAssignments_dbo_Instructors_InstructorID">
+          <End Role="Instructors" Type="Self.Instructors" Multiplicity="1" />
+          <End Role="OfficeAssignments" Type="Self.OfficeAssignments" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Instructors">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="OfficeAssignments">
+              <PropertyRef Name="InstructorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Programmes_dbo_Departments_DepartmentId">
+          <End Role="Departments" Type="Self.Departments" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Programmes" Type="Self.Programmes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="DepartmentID" />
+            </Principal>
+            <Dependent Role="Programmes">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Programmes_dbo_Students_Student_Id">
+          <End Role="Students" Type="Self.Students" Multiplicity="0..1" />
+          <End Role="Programmes" Type="Self.Programmes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Programmes">
+              <PropertyRef Name="Student_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Questions_dbo_QuestionCategories_QuestionCategoryId">
+          <End Role="QuestionCategories" Type="Self.QuestionCategories" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Questions" Type="Self.Questions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuestionCategories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Questions">
+              <PropertyRef Name="QuestionCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_QuestionXDurations_dbo_Registrations_RegistrationId">
+          <End Role="Registrations" Type="Self.Registrations" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="QuestionXDurations" Type="Self.QuestionXDurations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Registrations">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="QuestionXDurations">
+              <PropertyRef Name="RegistrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_QuestionXDurations_dbo_TestXQuestions_TestXQuestionsId">
+          <End Role="TestXQuestions" Type="Self.TestXQuestions" Multiplicity="1" />
+          <End Role="QuestionXDurations" Type="Self.QuestionXDurations" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TestXQuestions">
+              <PropertyRef Name="TestXQuestionId" />
+            </Principal>
+            <Dependent Role="QuestionXDurations">
+              <PropertyRef Name="TestXQuestionsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Registrations_dbo_Students_StudentId">
+          <End Role="Students" Type="Self.Students" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Registrations" Type="Self.Registrations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Registrations">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Registrations_dbo_Tests_TestId">
+          <End Role="Tests" Type="Self.Tests" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Registrations" Type="Self.Registrations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tests">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Registrations">
+              <PropertyRef Name="TestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Supports_dbo_Courses_Course_Id">
+          <End Role="Courses" Type="Self.Courses" Multiplicity="0..1" />
+          <End Role="Supports" Type="Self.Supports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Supports">
+              <PropertyRef Name="Course_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Supports_dbo_FileDetailds_FileDetail_Id">
+          <End Role="FileDetailds" Type="Self.FileDetailds" Multiplicity="0..1" />
+          <End Role="Supports" Type="Self.Supports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileDetailds">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Supports">
+              <PropertyRef Name="FileDetail_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_TestXPapers_dbo_Choices_ChoiceId">
+          <End Role="Choices" Type="Self.Choices" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TestXPapers" Type="Self.TestXPapers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Choices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TestXPapers">
+              <PropertyRef Name="ChoiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_TestXPapers_dbo_Registrations_RegistrationId">
+          <End Role="Registrations" Type="Self.Registrations" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TestXPapers" Type="Self.TestXPapers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Registrations">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TestXPapers">
+              <PropertyRef Name="RegistrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_TestXPapers_dbo_TestXQuestions_TestXQuestions_TestXQuestionId">
+          <End Role="TestXQuestions" Type="Self.TestXQuestions" Multiplicity="0..1" />
+          <End Role="TestXPapers" Type="Self.TestXPapers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestXQuestions">
+              <PropertyRef Name="TestXQuestionId" />
+            </Principal>
+            <Dependent Role="TestXPapers">
+              <PropertyRef Name="TestXQuestions_TestXQuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_TestXQuestions_dbo_Questions_TestXQuestionId">
+          <End Role="Questions" Type="Self.Questions" Multiplicity="1" />
+          <End Role="TestXQuestions" Type="Self.TestXQuestions" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TestXQuestions">
+              <PropertyRef Name="TestXQuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_TestXQuestions_dbo_Tests_TestId">
+          <End Role="Tests" Type="Self.Tests" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TestXQuestions" Type="Self.TestXQuestions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tests">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TestXQuestions">
+              <PropertyRef Name="TestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Choices" EntityType="Self.Choices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CourseInstructors" EntityType="Self.CourseInstructors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Enrollments" EntityType="Self.Enrollments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FileDetailds" EntityType="Self.FileDetailds" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FileDetais" EntityType="Self.FileDetais" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Instructors" EntityType="Self.Instructors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OfficeAssignments" EntityType="Self.OfficeAssignments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Programmes" EntityType="Self.Programmes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuestionCategories" EntityType="Self.QuestionCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Questions" EntityType="Self.Questions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuestionXDurations" EntityType="Self.QuestionXDurations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Registrations" EntityType="Self.Registrations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supports" EntityType="Self.Supports" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tests" EntityType="Self.Tests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TestXPapers" EntityType="Self.TestXPapers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TestXQuestions" EntityType="Self.TestXQuestions" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Choices_dbo_Questions_QuestionId" Association="Self.FK_dbo_Choices_dbo_Questions_QuestionId">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="Choices" EntitySet="Choices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CourseInstructors_dbo_Courses_Course_Id" Association="Self.FK_dbo_CourseInstructors_dbo_Courses_Course_Id">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="CourseInstructors" EntitySet="CourseInstructors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CourseInstructors_dbo_Instructors_Instructor_id" Association="Self.FK_dbo_CourseInstructors_dbo_Instructors_Instructor_id">
+            <End Role="Instructors" EntitySet="Instructors" />
+            <End Role="CourseInstructors" EntitySet="CourseInstructors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Courses_dbo_Departments_DepartmentID" Association="Self.FK_dbo_Courses_dbo_Departments_DepartmentID">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="Courses" EntitySet="Courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Departments_dbo_Instructors_GetInstructor_id" Association="Self.FK_dbo_Departments_dbo_Instructors_GetInstructor_id">
+            <End Role="Instructors" EntitySet="Instructors" />
+            <End Role="Departments" EntitySet="Departments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Departments_dbo_Students_Student_Id" Association="Self.FK_dbo_Departments_dbo_Students_Student_Id">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Departments" EntitySet="Departments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Enrollments_dbo_Courses_CourseID" Association="Self.FK_dbo_Enrollments_dbo_Courses_CourseID">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="Enrollments" EntitySet="Enrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Enrollments_dbo_Students_StudentID" Association="Self.FK_dbo_Enrollments_dbo_Students_StudentID">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Enrollments" EntitySet="Enrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_FileDetailds_dbo_Instructors_InstructorId" Association="Self.FK_dbo_FileDetailds_dbo_Instructors_InstructorId">
+            <End Role="Instructors" EntitySet="Instructors" />
+            <End Role="FileDetailds" EntitySet="FileDetailds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_FileDetailds_dbo_Supports_Support_SupportId" Association="Self.FK_dbo_FileDetailds_dbo_Supports_Support_SupportId">
+            <End Role="Supports" EntitySet="Supports" />
+            <End Role="FileDetailds" EntitySet="FileDetailds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_FileDetailds_dbo_Supports_Support_SupportId1" Association="Self.FK_dbo_FileDetailds_dbo_Supports_Support_SupportId1">
+            <End Role="Supports" EntitySet="Supports" />
+            <End Role="FileDetailds" EntitySet="FileDetailds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_FileDetais_dbo_Instructors_InstructorId" Association="Self.FK_dbo_FileDetais_dbo_Instructors_InstructorId">
+            <End Role="Instructors" EntitySet="Instructors" />
+            <End Role="FileDetais" EntitySet="FileDetais" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_FileDetais_dbo_Supports_SupportId" Association="Self.FK_dbo_FileDetais_dbo_Supports_SupportId">
+            <End Role="Supports" EntitySet="Supports" />
+            <End Role="FileDetais" EntitySet="FileDetais" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Instructors_dbo_Departments_Department_DepartmentID" Association="Self.FK_dbo_Instructors_dbo_Departments_Department_DepartmentID">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="Instructors" EntitySet="Instructors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Instructors_dbo_Departments_Department_DepartmentID1" Association="Self.FK_dbo_Instructors_dbo_Departments_Department_DepartmentID1">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="Instructors" EntitySet="Instructors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Instructors_dbo_Registrations_Registration_Id" Association="Self.FK_dbo_Instructors_dbo_Registrations_Registration_Id">
+            <End Role="Registrations" EntitySet="Registrations" />
+            <End Role="Instructors" EntitySet="Instructors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_OfficeAssignments_dbo_Instructors_InstructorID" Association="Self.FK_dbo_OfficeAssignments_dbo_Instructors_InstructorID">
+            <End Role="Instructors" EntitySet="Instructors" />
+            <End Role="OfficeAssignments" EntitySet="OfficeAssignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Programmes_dbo_Departments_DepartmentId" Association="Self.FK_dbo_Programmes_dbo_Departments_DepartmentId">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="Programmes" EntitySet="Programmes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Programmes_dbo_Students_Student_Id" Association="Self.FK_dbo_Programmes_dbo_Students_Student_Id">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Programmes" EntitySet="Programmes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Questions_dbo_QuestionCategories_QuestionCategoryId" Association="Self.FK_dbo_Questions_dbo_QuestionCategories_QuestionCategoryId">
+            <End Role="QuestionCategories" EntitySet="QuestionCategories" />
+            <End Role="Questions" EntitySet="Questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_QuestionXDurations_dbo_Registrations_RegistrationId" Association="Self.FK_dbo_QuestionXDurations_dbo_Registrations_RegistrationId">
+            <End Role="Registrations" EntitySet="Registrations" />
+            <End Role="QuestionXDurations" EntitySet="QuestionXDurations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_QuestionXDurations_dbo_TestXQuestions_TestXQuestionsId" Association="Self.FK_dbo_QuestionXDurations_dbo_TestXQuestions_TestXQuestionsId">
+            <End Role="TestXQuestions" EntitySet="TestXQuestions" />
+            <End Role="QuestionXDurations" EntitySet="QuestionXDurations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Registrations_dbo_Students_StudentId" Association="Self.FK_dbo_Registrations_dbo_Students_StudentId">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Registrations" EntitySet="Registrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Registrations_dbo_Tests_TestId" Association="Self.FK_dbo_Registrations_dbo_Tests_TestId">
+            <End Role="Tests" EntitySet="Tests" />
+            <End Role="Registrations" EntitySet="Registrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Supports_dbo_Courses_Course_Id" Association="Self.FK_dbo_Supports_dbo_Courses_Course_Id">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="Supports" EntitySet="Supports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Supports_dbo_FileDetailds_FileDetail_Id" Association="Self.FK_dbo_Supports_dbo_FileDetailds_FileDetail_Id">
+            <End Role="FileDetailds" EntitySet="FileDetailds" />
+            <End Role="Supports" EntitySet="Supports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_TestXPapers_dbo_Choices_ChoiceId" Association="Self.FK_dbo_TestXPapers_dbo_Choices_ChoiceId">
+            <End Role="Choices" EntitySet="Choices" />
+            <End Role="TestXPapers" EntitySet="TestXPapers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_TestXPapers_dbo_Registrations_RegistrationId" Association="Self.FK_dbo_TestXPapers_dbo_Registrations_RegistrationId">
+            <End Role="Registrations" EntitySet="Registrations" />
+            <End Role="TestXPapers" EntitySet="TestXPapers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_TestXPapers_dbo_TestXQuestions_TestXQuestions_TestXQuestionId" Association="Self.FK_dbo_TestXPapers_dbo_TestXQuestions_TestXQuestions_TestXQuestionId">
+            <End Role="TestXQuestions" EntitySet="TestXQuestions" />
+            <End Role="TestXPapers" EntitySet="TestXPapers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_TestXQuestions_dbo_Questions_TestXQuestionId" Association="Self.FK_dbo_TestXQuestions_dbo_Questions_TestXQuestionId">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="TestXQuestions" EntitySet="TestXQuestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_TestXQuestions_dbo_Tests_TestId" Association="Self.FK_dbo_TestXQuestions_dbo_Tests_TestId">
+            <End Role="Tests" EntitySet="Tests" />
+            <End Role="TestXQuestions" EntitySet="TestXQuestions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Registered" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserRoles" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserPhoto" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="Choice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuestionId" Type="Int32" Nullable="false" />
+          <Property Name="Label" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Points" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Question" Relationship="Self.FK_dbo_Choices_dbo_Questions_QuestionId" FromRole="Choices" ToRole="Questions" />
+          <NavigationProperty Name="TestXPapers" Relationship="Self.FK_dbo_TestXPapers_dbo_Choices_ChoiceId" FromRole="Choices" ToRole="TestXPapers" />
+        </EntityType>
+        <EntityType Name="Cours">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Credits" Type="Int32" Nullable="false" />
+          <Property Name="DepartmentID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Department" Relationship="Self.FK_dbo_Courses_dbo_Departments_DepartmentID" FromRole="Courses" ToRole="Departments" />
+          <NavigationProperty Name="Enrollments" Relationship="Self.FK_dbo_Enrollments_dbo_Courses_CourseID" FromRole="Courses" ToRole="Enrollments" />
+          <NavigationProperty Name="Supports" Relationship="Self.FK_dbo_Supports_dbo_Courses_Course_Id" FromRole="Courses" ToRole="Supports" />
+          <NavigationProperty Name="Instructors" Relationship="Self.CourseInstructors" FromRole="Courses" ToRole="Instructors" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="DepartmentID" />
+          </Key>
+          <Property Name="DepartmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InstructorID" Type="Int32" Nullable="false" />
+          <Property Name="GetInstructor_id" Type="Int32" />
+          <Property Name="Student_Id" Type="Int32" />
+          <NavigationProperty Name="Courses" Relationship="Self.FK_dbo_Courses_dbo_Departments_DepartmentID" FromRole="Departments" ToRole="Courses" />
+          <NavigationProperty Name="Instructor" Relationship="Self.FK_dbo_Departments_dbo_Instructors_GetInstructor_id" FromRole="Departments" ToRole="Instructors" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_dbo_Departments_dbo_Students_Student_Id" FromRole="Departments" ToRole="Students" />
+          <NavigationProperty Name="Instructors" Relationship="Self.FK_dbo_Instructors_dbo_Departments_Department_DepartmentID" FromRole="Departments" ToRole="Instructors" />
+          <NavigationProperty Name="Instructors1" Relationship="Self.FK_dbo_Instructors_dbo_Departments_Department_DepartmentID1" FromRole="Departments" ToRole="Instructors" />
+          <NavigationProperty Name="Programmes" Relationship="Self.FK_dbo_Programmes_dbo_Departments_DepartmentId" FromRole="Departments" ToRole="Programmes" />
+        </EntityType>
+        <EntityType Name="Enrollment">
+          <Key>
+            <PropertyRef Name="EnrollmentID" />
+          </Key>
+          <Property Name="EnrollmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseID" Type="Int32" Nullable="false" />
+          <Property Name="StudentID" Type="Int32" Nullable="false" />
+          <Property Name="Grades" Type="Int32" />
+          <NavigationProperty Name="Cours" Relationship="Self.FK_dbo_Enrollments_dbo_Courses_CourseID" FromRole="Enrollments" ToRole="Courses" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_dbo_Enrollments_dbo_Students_StudentID" FromRole="Enrollments" ToRole="Students" />
+        </EntityType>
+        <EntityType Name="FileDetaild">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="FileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Extension" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InstructorId" Type="Int32" Nullable="false" />
+          <Property Name="SupportId" Type="Int32" Nullable="false" />
+          <Property Name="CourseCode" Type="Int32" Nullable="false" />
+          <Property Name="Support_SupportId" Type="Int32" />
+          <Property Name="Support_SupportId1" Type="Int32" />
+          <NavigationProperty Name="Instructor" Relationship="Self.FK_dbo_FileDetailds_dbo_Instructors_InstructorId" FromRole="FileDetailds" ToRole="Instructors" />
+          <NavigationProperty Name="Support" Relationship="Self.FK_dbo_FileDetailds_dbo_Supports_Support_SupportId" FromRole="FileDetailds" ToRole="Supports" />
+          <NavigationProperty Name="Support1" Relationship="Self.FK_dbo_FileDetailds_dbo_Supports_Support_SupportId1" FromRole="FileDetailds" ToRole="Supports" />
+          <NavigationProperty Name="Supports" Relationship="Self.FK_dbo_Supports_dbo_FileDetailds_FileDetail_Id" FromRole="FileDetailds" ToRole="Supports" />
+        </EntityType>
+        <EntityType Name="FileDetai">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="FileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Extension" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InstructorId" Type="Int32" Nullable="false" />
+          <Property Name="SupportId" Type="Int32" Nullable="false" />
+          <Property Name="CourseCode" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Instructor" Relationship="Self.FK_dbo_FileDetais_dbo_Instructors_InstructorId" FromRole="FileDetais" ToRole="Instructors" />
+          <NavigationProperty Name="Support" Relationship="Self.FK_dbo_FileDetais_dbo_Supports_SupportId" FromRole="FileDetais" ToRole="Supports" />
+        </EntityType>
+        <EntityType Name="Instructor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HireDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+          <Property Name="Department_DepartmentID" Type="Int32" />
+          <Property Name="Department_DepartmentID1" Type="Int32" />
+          <Property Name="Registration_Id" Type="Int32" />
+          <NavigationProperty Name="Departments" Relationship="Self.FK_dbo_Departments_dbo_Instructors_GetInstructor_id" FromRole="Instructors" ToRole="Departments" />
+          <NavigationProperty Name="Department" Relationship="Self.FK_dbo_Instructors_dbo_Departments_Department_DepartmentID" FromRole="Instructors" ToRole="Departments" />
+          <NavigationProperty Name="Department1" Relationship="Self.FK_dbo_Instructors_dbo_Departments_Department_DepartmentID1" FromRole="Instructors" ToRole="Departments" />
+          <NavigationProperty Name="FileDetailds" Relationship="Self.FK_dbo_FileDetailds_dbo_Instructors_InstructorId" FromRole="Instructors" ToRole="FileDetailds" />
+          <NavigationProperty Name="FileDetais" Relationship="Self.FK_dbo_FileDetais_dbo_Instructors_InstructorId" FromRole="Instructors" ToRole="FileDetais" />
+          <NavigationProperty Name="Registration" Relationship="Self.FK_dbo_Instructors_dbo_Registrations_Registration_Id" FromRole="Instructors" ToRole="Registrations" />
+          <NavigationProperty Name="OfficeAssignment" Relationship="Self.FK_dbo_OfficeAssignments_dbo_Instructors_InstructorID" FromRole="Instructors" ToRole="OfficeAssignments" />
+          <NavigationProperty Name="Courses" Relationship="Self.CourseInstructors" FromRole="Instructors" ToRole="Courses" />
+        </EntityType>
+        <EntityType Name="OfficeAssignment">
+          <Key>
+            <PropertyRef Name="InstructorID" />
+          </Key>
+          <Property Name="InstructorID" Type="Int32" Nullable="false" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Instructor" Relationship="Self.FK_dbo_OfficeAssignments_dbo_Instructors_InstructorID" FromRole="OfficeAssignments" ToRole="Instructors" />
+        </EntityType>
+        <EntityType Name="Programme">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Programmes" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+          <Property Name="Student_Id" Type="Int32" />
+          <NavigationProperty Name="Department" Relationship="Self.FK_dbo_Programmes_dbo_Departments_DepartmentId" FromRole="Programmes" ToRole="Departments" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_dbo_Programmes_dbo_Students_Student_Id" FromRole="Programmes" ToRole="Students" />
+        </EntityType>
+        <EntityType Name="QuestionCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Questions" Relationship="Self.FK_dbo_Questions_dbo_QuestionCategories_QuestionCategoryId" FromRole="QuestionCategories" ToRole="Questions" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuestionCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="QuestionType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="QuestionId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Points" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Choices" Relationship="Self.FK_dbo_Choices_dbo_Questions_QuestionId" FromRole="Questions" ToRole="Choices" />
+          <NavigationProperty Name="QuestionCategory" Relationship="Self.FK_dbo_Questions_dbo_QuestionCategories_QuestionCategoryId" FromRole="Questions" ToRole="QuestionCategories" />
+          <NavigationProperty Name="TestXQuestion" Relationship="Self.FK_dbo_TestXQuestions_dbo_Questions_TestXQuestionId" FromRole="Questions" ToRole="TestXQuestions" />
+        </EntityType>
+        <EntityType Name="QuestionXDuration">
+          <Key>
+            <PropertyRef Name="TestXQuestionsId" />
+          </Key>
+          <Property Name="TestXQuestionsId" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="RegistrationId" Type="Int32" Nullable="false" />
+          <Property Name="TestXQuestionId" Type="Int32" Nullable="false" />
+          <Property Name="RequestTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LeaveTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AnsweredTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Registration" Relationship="Self.FK_dbo_QuestionXDurations_dbo_Registrations_RegistrationId" FromRole="QuestionXDurations" ToRole="Registrations" />
+          <NavigationProperty Name="TestXQuestion" Relationship="Self.FK_dbo_QuestionXDurations_dbo_TestXQuestions_TestXQuestionsId" FromRole="QuestionXDurations" ToRole="TestXQuestions" />
+        </EntityType>
+        <EntityType Name="Registration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="InstructorId" Type="Int32" Nullable="false" />
+          <Property Name="TestId" Type="Int32" Nullable="false" />
+          <Property Name="RegistrationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Token" Type="Guid" Nullable="false" />
+          <Property Name="ExpireTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Instructors" Relationship="Self.FK_dbo_Instructors_dbo_Registrations_Registration_Id" FromRole="Registrations" ToRole="Instructors" />
+          <NavigationProperty Name="QuestionXDurations" Relationship="Self.FK_dbo_QuestionXDurations_dbo_Registrations_RegistrationId" FromRole="Registrations" ToRole="QuestionXDurations" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_dbo_Registrations_dbo_Students_StudentId" FromRole="Registrations" ToRole="Students" />
+          <NavigationProperty Name="Test" Relationship="Self.FK_dbo_Registrations_dbo_Tests_TestId" FromRole="Registrations" ToRole="Tests" />
+          <NavigationProperty Name="TestXPapers" Relationship="Self.FK_dbo_TestXPapers_dbo_Registrations_RegistrationId" FromRole="Registrations" ToRole="TestXPapers" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MatriculationNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaritalStat" Type="Int32" Nullable="false" />
+          <Property Name="userId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Genderr" Type="Int32" Nullable="false" />
+          <Property Name="Religions" Type="Int32" Nullable="false" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Nationality" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StateOfOrigin" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LGA" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="level" Type="Int32" Nullable="false" />
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+          <Property Name="ProgrammeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Departments" Relationship="Self.FK_dbo_Departments_dbo_Students_Student_Id" FromRole="Students" ToRole="Departments" />
+          <NavigationProperty Name="Enrollments" Relationship="Self.FK_dbo_Enrollments_dbo_Students_StudentID" FromRole="Students" ToRole="Enrollments" />
+          <NavigationProperty Name="Programmes" Relationship="Self.FK_dbo_Programmes_dbo_Students_Student_Id" FromRole="Students" ToRole="Programmes" />
+          <NavigationProperty Name="Registrations" Relationship="Self.FK_dbo_Registrations_dbo_Students_StudentId" FromRole="Students" ToRole="Registrations" />
+        </EntityType>
+        <EntityType Name="Support">
+          <Key>
+            <PropertyRef Name="SupportId" />
+          </Key>
+          <Property Name="SupportId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Summary" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CoursesId" Type="Int32" Nullable="false" />
+          <Property Name="Course_Id" Type="Int32" />
+          <Property Name="FileDetail_Id" Type="Guid" />
+          <NavigationProperty Name="Cours" Relationship="Self.FK_dbo_Supports_dbo_Courses_Course_Id" FromRole="Supports" ToRole="Courses" />
+          <NavigationProperty Name="FileDetailds" Relationship="Self.FK_dbo_FileDetailds_dbo_Supports_Support_SupportId" FromRole="Supports" ToRole="FileDetailds" />
+          <NavigationProperty Name="FileDetailds1" Relationship="Self.FK_dbo_FileDetailds_dbo_Supports_Support_SupportId1" FromRole="Supports" ToRole="FileDetailds" />
+          <NavigationProperty Name="FileDetaild" Relationship="Self.FK_dbo_Supports_dbo_FileDetailds_FileDetail_Id" FromRole="Supports" ToRole="FileDetailds" />
+          <NavigationProperty Name="FileDetais" Relationship="Self.FK_dbo_FileDetais_dbo_Supports_SupportId" FromRole="Supports" ToRole="FileDetais" />
+        </EntityType>
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="DurationInMinute" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Registrations" Relationship="Self.FK_dbo_Registrations_dbo_Tests_TestId" FromRole="Tests" ToRole="Registrations" />
+          <NavigationProperty Name="TestXQuestions" Relationship="Self.FK_dbo_TestXQuestions_dbo_Tests_TestId" FromRole="Tests" ToRole="TestXQuestions" />
+        </EntityType>
+        <EntityType Name="TestXPaper">
+          <Key>
+            <PropertyRef Name="TestXPaperId" />
+          </Key>
+          <Property Name="TestXPaperId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MarkScored" Type="Int32" Nullable="false" />
+          <Property Name="ChoiceId" Type="Int32" Nullable="false" />
+          <Property Name="RegistrationId" Type="Int32" Nullable="false" />
+          <Property Name="TestXQuestionsId" Type="Int32" Nullable="false" />
+          <Property Name="TestXQuestions_TestXQuestionId" Type="Int32" />
+          <NavigationProperty Name="Choice" Relationship="Self.FK_dbo_TestXPapers_dbo_Choices_ChoiceId" FromRole="TestXPapers" ToRole="Choices" />
+          <NavigationProperty Name="Registration" Relationship="Self.FK_dbo_TestXPapers_dbo_Registrations_RegistrationId" FromRole="TestXPapers" ToRole="Registrations" />
+          <NavigationProperty Name="TestXQuestion" Relationship="Self.FK_dbo_TestXPapers_dbo_TestXQuestions_TestXQuestions_TestXQuestionId" FromRole="TestXPapers" ToRole="TestXQuestions" />
+        </EntityType>
+        <EntityType Name="TestXQuestion">
+          <Key>
+            <PropertyRef Name="TestXQuestionId" />
+          </Key>
+          <Property Name="TestXQuestionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TestId" Type="Int32" Nullable="false" />
+          <Property Name="QuestNumbers" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="QuestionId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Question" Relationship="Self.FK_dbo_TestXQuestions_dbo_Questions_TestXQuestionId" FromRole="TestXQuestions" ToRole="Questions" />
+          <NavigationProperty Name="QuestionXDuration" Relationship="Self.FK_dbo_QuestionXDurations_dbo_TestXQuestions_TestXQuestionsId" FromRole="TestXQuestions" ToRole="QuestionXDurations" />
+          <NavigationProperty Name="Test" Relationship="Self.FK_dbo_TestXQuestions_dbo_Tests_TestId" FromRole="TestXQuestions" ToRole="Tests" />
+          <NavigationProperty Name="TestXPapers" Relationship="Self.FK_dbo_TestXPapers_dbo_TestXQuestions_TestXQuestions_TestXQuestionId" FromRole="TestXQuestions" ToRole="TestXPapers" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Choices_dbo_Questions_QuestionId">
+          <End Role="Questions" Type="Self.Question" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Choices" Type="Self.Choice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Choices">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_TestXPapers_dbo_Choices_ChoiceId">
+          <End Role="Choices" Type="Self.Choice" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TestXPapers" Type="Self.TestXPaper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Choices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TestXPapers">
+              <PropertyRef Name="ChoiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Courses_dbo_Departments_DepartmentID">
+          <End Role="Departments" Type="Self.Department" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Courses" Type="Self.Cours" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="DepartmentID" />
+            </Principal>
+            <Dependent Role="Courses">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Enrollments_dbo_Courses_CourseID">
+          <End Role="Courses" Type="Self.Cours" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Enrollments" Type="Self.Enrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Enrollments">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Supports_dbo_Courses_Course_Id">
+          <End Role="Courses" Type="Self.Cours" Multiplicity="0..1" />
+          <End Role="Supports" Type="Self.Support" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Supports">
+              <PropertyRef Name="Course_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Departments_dbo_Instructors_GetInstructor_id">
+          <End Role="Instructors" Type="Self.Instructor" Multiplicity="0..1" />
+          <End Role="Departments" Type="Self.Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instructors">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Departments">
+              <PropertyRef Name="GetInstructor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Departments_dbo_Students_Student_Id">
+          <End Role="Students" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="Departments" Type="Self.Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Departments">
+              <PropertyRef Name="Student_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Instructors_dbo_Departments_Department_DepartmentID">
+          <End Role="Departments" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="Instructors" Type="Self.Instructor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="DepartmentID" />
+            </Principal>
+            <Dependent Role="Instructors">
+              <PropertyRef Name="Department_DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Instructors_dbo_Departments_Department_DepartmentID1">
+          <End Role="Departments" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="Instructors" Type="Self.Instructor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="DepartmentID" />
+            </Principal>
+            <Dependent Role="Instructors">
+              <PropertyRef Name="Department_DepartmentID1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Programmes_dbo_Departments_DepartmentId">
+          <End Role="Departments" Type="Self.Department" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Programmes" Type="Self.Programme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="DepartmentID" />
+            </Principal>
+            <Dependent Role="Programmes">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Enrollments_dbo_Students_StudentID">
+          <End Role="Students" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Enrollments" Type="Self.Enrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Enrollments">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_FileDetailds_dbo_Instructors_InstructorId">
+          <End Role="Instructors" Type="Self.Instructor" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FileDetailds" Type="Self.FileDetaild" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instructors">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="FileDetailds">
+              <PropertyRef Name="InstructorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_FileDetailds_dbo_Supports_Support_SupportId">
+          <End Role="Supports" Type="Self.Support" Multiplicity="0..1" />
+          <End Role="FileDetailds" Type="Self.FileDetaild" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supports">
+              <PropertyRef Name="SupportId" />
+            </Principal>
+            <Dependent Role="FileDetailds">
+              <PropertyRef Name="Support_SupportId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_FileDetailds_dbo_Supports_Support_SupportId1">
+          <End Role="Supports" Type="Self.Support" Multiplicity="0..1" />
+          <End Role="FileDetailds" Type="Self.FileDetaild" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supports">
+              <PropertyRef Name="SupportId" />
+            </Principal>
+            <Dependent Role="FileDetailds">
+              <PropertyRef Name="Support_SupportId1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Supports_dbo_FileDetailds_FileDetail_Id">
+          <End Role="FileDetailds" Type="Self.FileDetaild" Multiplicity="0..1" />
+          <End Role="Supports" Type="Self.Support" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileDetailds">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Supports">
+              <PropertyRef Name="FileDetail_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_FileDetais_dbo_Instructors_InstructorId">
+          <End Role="Instructors" Type="Self.Instructor" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FileDetais" Type="Self.FileDetai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instructors">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="FileDetais">
+              <PropertyRef Name="InstructorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_FileDetais_dbo_Supports_SupportId">
+          <End Role="Supports" Type="Self.Support" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FileDetais" Type="Self.FileDetai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supports">
+              <PropertyRef Name="SupportId" />
+            </Principal>
+            <Dependent Role="FileDetais">
+              <PropertyRef Name="SupportId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Instructors_dbo_Registrations_Registration_Id">
+          <End Role="Registrations" Type="Self.Registration" Multiplicity="0..1" />
+          <End Role="Instructors" Type="Self.Instructor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Registrations">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Instructors">
+              <PropertyRef Name="Registration_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_OfficeAssignments_dbo_Instructors_InstructorID">
+          <End Role="Instructors" Type="Self.Instructor" Multiplicity="1" />
+          <End Role="OfficeAssignments" Type="Self.OfficeAssignment" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Instructors">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="OfficeAssignments">
+              <PropertyRef Name="InstructorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Programmes_dbo_Students_Student_Id">
+          <End Role="Students" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="Programmes" Type="Self.Programme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Programmes">
+              <PropertyRef Name="Student_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Questions_dbo_QuestionCategories_QuestionCategoryId">
+          <End Role="QuestionCategories" Type="Self.QuestionCategory" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Questions" Type="Self.Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuestionCategories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Questions">
+              <PropertyRef Name="QuestionCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_TestXQuestions_dbo_Questions_TestXQuestionId">
+          <End Role="Questions" Type="Self.Question" Multiplicity="1" />
+          <End Role="TestXQuestions" Type="Self.TestXQuestion" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TestXQuestions">
+              <PropertyRef Name="TestXQuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_QuestionXDurations_dbo_Registrations_RegistrationId">
+          <End Role="Registrations" Type="Self.Registration" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="QuestionXDurations" Type="Self.QuestionXDuration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Registrations">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="QuestionXDurations">
+              <PropertyRef Name="RegistrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_QuestionXDurations_dbo_TestXQuestions_TestXQuestionsId">
+          <End Role="TestXQuestions" Type="Self.TestXQuestion" Multiplicity="1" />
+          <End Role="QuestionXDurations" Type="Self.QuestionXDuration" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TestXQuestions">
+              <PropertyRef Name="TestXQuestionId" />
+            </Principal>
+            <Dependent Role="QuestionXDurations">
+              <PropertyRef Name="TestXQuestionsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Registrations_dbo_Students_StudentId">
+          <End Role="Students" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Registrations" Type="Self.Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Registrations">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Registrations_dbo_Tests_TestId">
+          <End Role="Tests" Type="Self.Test" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Registrations" Type="Self.Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tests">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Registrations">
+              <PropertyRef Name="TestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_TestXPapers_dbo_Registrations_RegistrationId">
+          <End Role="Registrations" Type="Self.Registration" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TestXPapers" Type="Self.TestXPaper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Registrations">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TestXPapers">
+              <PropertyRef Name="RegistrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_TestXQuestions_dbo_Tests_TestId">
+          <End Role="Tests" Type="Self.Test" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TestXQuestions" Type="Self.TestXQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tests">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TestXQuestions">
+              <PropertyRef Name="TestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_TestXPapers_dbo_TestXQuestions_TestXQuestions_TestXQuestionId">
+          <End Role="TestXQuestions" Type="Self.TestXQuestion" Multiplicity="0..1" />
+          <End Role="TestXPapers" Type="Self.TestXPaper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestXQuestions">
+              <PropertyRef Name="TestXQuestionId" />
+            </Principal>
+            <Dependent Role="TestXPapers">
+              <PropertyRef Name="TestXQuestions_TestXQuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <Association Name="CourseInstructors">
+          <End Role="Courses" Type="Self.Cours" Multiplicity="*" />
+          <End Role="Instructors" Type="Self.Instructor" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="Choices" EntityType="Self.Choice" />
+          <EntitySet Name="Courses" EntityType="Self.Cours" />
+          <EntitySet Name="Departments" EntityType="Self.Department" />
+          <EntitySet Name="Enrollments" EntityType="Self.Enrollment" />
+          <EntitySet Name="FileDetailds" EntityType="Self.FileDetaild" />
+          <EntitySet Name="FileDetais" EntityType="Self.FileDetai" />
+          <EntitySet Name="Instructors" EntityType="Self.Instructor" />
+          <EntitySet Name="OfficeAssignments" EntityType="Self.OfficeAssignment" />
+          <EntitySet Name="Programmes" EntityType="Self.Programme" />
+          <EntitySet Name="QuestionCategories" EntityType="Self.QuestionCategory" />
+          <EntitySet Name="Questions" EntityType="Self.Question" />
+          <EntitySet Name="QuestionXDurations" EntityType="Self.QuestionXDuration" />
+          <EntitySet Name="Registrations" EntityType="Self.Registration" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="Supports" EntityType="Self.Support" />
+          <EntitySet Name="Tests" EntityType="Self.Test" />
+          <EntitySet Name="TestXPapers" EntityType="Self.TestXPaper" />
+          <EntitySet Name="TestXQuestions" EntityType="Self.TestXQuestion" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Choices_dbo_Questions_QuestionId" Association="Self.FK_dbo_Choices_dbo_Questions_QuestionId">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="Choices" EntitySet="Choices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_TestXPapers_dbo_Choices_ChoiceId" Association="Self.FK_dbo_TestXPapers_dbo_Choices_ChoiceId">
+            <End Role="Choices" EntitySet="Choices" />
+            <End Role="TestXPapers" EntitySet="TestXPapers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Courses_dbo_Departments_DepartmentID" Association="Self.FK_dbo_Courses_dbo_Departments_DepartmentID">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="Courses" EntitySet="Courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Enrollments_dbo_Courses_CourseID" Association="Self.FK_dbo_Enrollments_dbo_Courses_CourseID">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="Enrollments" EntitySet="Enrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Supports_dbo_Courses_Course_Id" Association="Self.FK_dbo_Supports_dbo_Courses_Course_Id">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="Supports" EntitySet="Supports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Departments_dbo_Instructors_GetInstructor_id" Association="Self.FK_dbo_Departments_dbo_Instructors_GetInstructor_id">
+            <End Role="Instructors" EntitySet="Instructors" />
+            <End Role="Departments" EntitySet="Departments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Departments_dbo_Students_Student_Id" Association="Self.FK_dbo_Departments_dbo_Students_Student_Id">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Departments" EntitySet="Departments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Instructors_dbo_Departments_Department_DepartmentID" Association="Self.FK_dbo_Instructors_dbo_Departments_Department_DepartmentID">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="Instructors" EntitySet="Instructors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Instructors_dbo_Departments_Department_DepartmentID1" Association="Self.FK_dbo_Instructors_dbo_Departments_Department_DepartmentID1">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="Instructors" EntitySet="Instructors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Programmes_dbo_Departments_DepartmentId" Association="Self.FK_dbo_Programmes_dbo_Departments_DepartmentId">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="Programmes" EntitySet="Programmes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Enrollments_dbo_Students_StudentID" Association="Self.FK_dbo_Enrollments_dbo_Students_StudentID">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Enrollments" EntitySet="Enrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_FileDetailds_dbo_Instructors_InstructorId" Association="Self.FK_dbo_FileDetailds_dbo_Instructors_InstructorId">
+            <End Role="Instructors" EntitySet="Instructors" />
+            <End Role="FileDetailds" EntitySet="FileDetailds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_FileDetailds_dbo_Supports_Support_SupportId" Association="Self.FK_dbo_FileDetailds_dbo_Supports_Support_SupportId">
+            <End Role="Supports" EntitySet="Supports" />
+            <End Role="FileDetailds" EntitySet="FileDetailds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_FileDetailds_dbo_Supports_Support_SupportId1" Association="Self.FK_dbo_FileDetailds_dbo_Supports_Support_SupportId1">
+            <End Role="Supports" EntitySet="Supports" />
+            <End Role="FileDetailds" EntitySet="FileDetailds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Supports_dbo_FileDetailds_FileDetail_Id" Association="Self.FK_dbo_Supports_dbo_FileDetailds_FileDetail_Id">
+            <End Role="FileDetailds" EntitySet="FileDetailds" />
+            <End Role="Supports" EntitySet="Supports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_FileDetais_dbo_Instructors_InstructorId" Association="Self.FK_dbo_FileDetais_dbo_Instructors_InstructorId">
+            <End Role="Instructors" EntitySet="Instructors" />
+            <End Role="FileDetais" EntitySet="FileDetais" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_FileDetais_dbo_Supports_SupportId" Association="Self.FK_dbo_FileDetais_dbo_Supports_SupportId">
+            <End Role="Supports" EntitySet="Supports" />
+            <End Role="FileDetais" EntitySet="FileDetais" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Instructors_dbo_Registrations_Registration_Id" Association="Self.FK_dbo_Instructors_dbo_Registrations_Registration_Id">
+            <End Role="Registrations" EntitySet="Registrations" />
+            <End Role="Instructors" EntitySet="Instructors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_OfficeAssignments_dbo_Instructors_InstructorID" Association="Self.FK_dbo_OfficeAssignments_dbo_Instructors_InstructorID">
+            <End Role="Instructors" EntitySet="Instructors" />
+            <End Role="OfficeAssignments" EntitySet="OfficeAssignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Programmes_dbo_Students_Student_Id" Association="Self.FK_dbo_Programmes_dbo_Students_Student_Id">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Programmes" EntitySet="Programmes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Questions_dbo_QuestionCategories_QuestionCategoryId" Association="Self.FK_dbo_Questions_dbo_QuestionCategories_QuestionCategoryId">
+            <End Role="QuestionCategories" EntitySet="QuestionCategories" />
+            <End Role="Questions" EntitySet="Questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_TestXQuestions_dbo_Questions_TestXQuestionId" Association="Self.FK_dbo_TestXQuestions_dbo_Questions_TestXQuestionId">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="TestXQuestions" EntitySet="TestXQuestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_QuestionXDurations_dbo_Registrations_RegistrationId" Association="Self.FK_dbo_QuestionXDurations_dbo_Registrations_RegistrationId">
+            <End Role="Registrations" EntitySet="Registrations" />
+            <End Role="QuestionXDurations" EntitySet="QuestionXDurations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_QuestionXDurations_dbo_TestXQuestions_TestXQuestionsId" Association="Self.FK_dbo_QuestionXDurations_dbo_TestXQuestions_TestXQuestionsId">
+            <End Role="TestXQuestions" EntitySet="TestXQuestions" />
+            <End Role="QuestionXDurations" EntitySet="QuestionXDurations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Registrations_dbo_Students_StudentId" Association="Self.FK_dbo_Registrations_dbo_Students_StudentId">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Registrations" EntitySet="Registrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Registrations_dbo_Tests_TestId" Association="Self.FK_dbo_Registrations_dbo_Tests_TestId">
+            <End Role="Tests" EntitySet="Tests" />
+            <End Role="Registrations" EntitySet="Registrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_TestXPapers_dbo_Registrations_RegistrationId" Association="Self.FK_dbo_TestXPapers_dbo_Registrations_RegistrationId">
+            <End Role="Registrations" EntitySet="Registrations" />
+            <End Role="TestXPapers" EntitySet="TestXPapers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_TestXQuestions_dbo_Tests_TestId" Association="Self.FK_dbo_TestXQuestions_dbo_Tests_TestId">
+            <End Role="Tests" EntitySet="Tests" />
+            <End Role="TestXQuestions" EntitySet="TestXQuestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_TestXPapers_dbo_TestXQuestions_TestXQuestions_TestXQuestionId" Association="Self.FK_dbo_TestXPapers_dbo_TestXQuestions_TestXQuestions_TestXQuestionId">
+            <End Role="TestXQuestions" EntitySet="TestXQuestions" />
+            <End Role="TestXPapers" EntitySet="TestXPapers" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="CourseInstructors" Association="Self.CourseInstructors">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="Instructors" EntitySet="Instructors" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="Model.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="Model.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="Model.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="Model.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="Model.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Registered" ColumnName="Registered" />
+                <ScalarProperty Name="UserRoles" ColumnName="UserRoles" />
+                <ScalarProperty Name="UserPhoto" ColumnName="UserPhoto" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Choices">
+            <EntityTypeMapping TypeName="Model.Choice">
+              <MappingFragment StoreEntitySet="Choices">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+                <ScalarProperty Name="Label" ColumnName="Label" />
+                <ScalarProperty Name="Points" ColumnName="Points" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="Model.Cours">
+              <MappingFragment StoreEntitySet="Courses">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CourseCode" ColumnName="CourseCode" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Credits" ColumnName="Credits" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="Model.Department">
+              <MappingFragment StoreEntitySet="Departments">
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="InstructorID" ColumnName="InstructorID" />
+                <ScalarProperty Name="GetInstructor_id" ColumnName="GetInstructor_id" />
+                <ScalarProperty Name="Student_Id" ColumnName="Student_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Enrollments">
+            <EntityTypeMapping TypeName="Model.Enrollment">
+              <MappingFragment StoreEntitySet="Enrollments">
+                <ScalarProperty Name="EnrollmentID" ColumnName="EnrollmentID" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="Grades" ColumnName="Grades" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FileDetailds">
+            <EntityTypeMapping TypeName="Model.FileDetaild">
+              <MappingFragment StoreEntitySet="FileDetailds">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+                <ScalarProperty Name="InstructorId" ColumnName="InstructorId" />
+                <ScalarProperty Name="SupportId" ColumnName="SupportId" />
+                <ScalarProperty Name="CourseCode" ColumnName="CourseCode" />
+                <ScalarProperty Name="Support_SupportId" ColumnName="Support_SupportId" />
+                <ScalarProperty Name="Support_SupportId1" ColumnName="Support_SupportId1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FileDetais">
+            <EntityTypeMapping TypeName="Model.FileDetai">
+              <MappingFragment StoreEntitySet="FileDetais">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+                <ScalarProperty Name="InstructorId" ColumnName="InstructorId" />
+                <ScalarProperty Name="SupportId" ColumnName="SupportId" />
+                <ScalarProperty Name="CourseCode" ColumnName="CourseCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Instructors">
+            <EntityTypeMapping TypeName="Model.Instructor">
+              <MappingFragment StoreEntitySet="Instructors">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="Department_DepartmentID" ColumnName="Department_DepartmentID" />
+                <ScalarProperty Name="Department_DepartmentID1" ColumnName="Department_DepartmentID1" />
+                <ScalarProperty Name="Registration_Id" ColumnName="Registration_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OfficeAssignments">
+            <EntityTypeMapping TypeName="Model.OfficeAssignment">
+              <MappingFragment StoreEntitySet="OfficeAssignments">
+                <ScalarProperty Name="InstructorID" ColumnName="InstructorID" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Programmes">
+            <EntityTypeMapping TypeName="Model.Programme">
+              <MappingFragment StoreEntitySet="Programmes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Programmes" ColumnName="Programmes" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="Student_Id" ColumnName="Student_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuestionCategories">
+            <EntityTypeMapping TypeName="Model.QuestionCategory">
+              <MappingFragment StoreEntitySet="QuestionCategories">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Questions">
+            <EntityTypeMapping TypeName="Model.Question">
+              <MappingFragment StoreEntitySet="Questions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="QuestionCategoryId" ColumnName="QuestionCategoryId" />
+                <ScalarProperty Name="QuestionType" ColumnName="QuestionType" />
+                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+                <ScalarProperty Name="Points" ColumnName="Points" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuestionXDurations">
+            <EntityTypeMapping TypeName="Model.QuestionXDuration">
+              <MappingFragment StoreEntitySet="QuestionXDurations">
+                <ScalarProperty Name="TestXQuestionsId" ColumnName="TestXQuestionsId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
+                <ScalarProperty Name="TestXQuestionId" ColumnName="TestXQuestionId" />
+                <ScalarProperty Name="RequestTime" ColumnName="RequestTime" />
+                <ScalarProperty Name="LeaveTime" ColumnName="LeaveTime" />
+                <ScalarProperty Name="AnsweredTime" ColumnName="AnsweredTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Registrations">
+            <EntityTypeMapping TypeName="Model.Registration">
+              <MappingFragment StoreEntitySet="Registrations">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="InstructorId" ColumnName="InstructorId" />
+                <ScalarProperty Name="TestId" ColumnName="TestId" />
+                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="ExpireTime" ColumnName="ExpireTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="Model.Student">
+              <MappingFragment StoreEntitySet="Students">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MatriculationNumber" ColumnName="MatriculationNumber" />
+                <ScalarProperty Name="MaritalStat" ColumnName="MaritalStat" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Genderr" ColumnName="Genderr" />
+                <ScalarProperty Name="Religions" ColumnName="Religions" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="StateOfOrigin" ColumnName="StateOfOrigin" />
+                <ScalarProperty Name="LGA" ColumnName="LGA" />
+                <ScalarProperty Name="level" ColumnName="level" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="ProgrammeId" ColumnName="ProgrammeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Supports">
+            <EntityTypeMapping TypeName="Model.Support">
+              <MappingFragment StoreEntitySet="Supports">
+                <ScalarProperty Name="SupportId" ColumnName="SupportId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Summary" ColumnName="Summary" />
+                <ScalarProperty Name="CoursesId" ColumnName="CoursesId" />
+                <ScalarProperty Name="Course_Id" ColumnName="Course_Id" />
+                <ScalarProperty Name="FileDetail_Id" ColumnName="FileDetail_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tests">
+            <EntityTypeMapping TypeName="Model.Test">
+              <MappingFragment StoreEntitySet="Tests">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="DurationInMinute" ColumnName="DurationInMinute" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestXPapers">
+            <EntityTypeMapping TypeName="Model.TestXPaper">
+              <MappingFragment StoreEntitySet="TestXPapers">
+                <ScalarProperty Name="TestXPaperId" ColumnName="TestXPaperId" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="MarkScored" ColumnName="MarkScored" />
+                <ScalarProperty Name="ChoiceId" ColumnName="ChoiceId" />
+                <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
+                <ScalarProperty Name="TestXQuestionsId" ColumnName="TestXQuestionsId" />
+                <ScalarProperty Name="TestXQuestions_TestXQuestionId" ColumnName="TestXQuestions_TestXQuestionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestXQuestions">
+            <EntityTypeMapping TypeName="Model.TestXQuestion">
+              <MappingFragment StoreEntitySet="TestXQuestions">
+                <ScalarProperty Name="TestXQuestionId" ColumnName="TestXQuestionId" />
+                <ScalarProperty Name="TestId" ColumnName="TestId" />
+                <ScalarProperty Name="QuestNumbers" ColumnName="QuestNumbers" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="CourseInstructors" TypeName="Model.CourseInstructors" StoreEntitySet="CourseInstructors">
+            <EndProperty Name="Courses">
+              <ScalarProperty Name="Id" ColumnName="Course_Id" />
+            </EndProperty>
+            <EndProperty Name="Instructors">
+              <ScalarProperty Name="id" ColumnName="Instructor_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
